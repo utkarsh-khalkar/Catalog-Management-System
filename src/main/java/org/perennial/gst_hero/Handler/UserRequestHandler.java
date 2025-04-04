@@ -6,7 +6,6 @@ import org.perennial.gst_hero.apiresponsedto.ApiResponseDTO;
 import org.perennial.gst_hero.mapper.UserMapper;
 import org.perennial.gst_hero.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import java.util.Optional;

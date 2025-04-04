@@ -1,6 +1,6 @@
 package org.perennial.gst_hero.DTO;
 
-import jakarta.persistence.Column;
+
 import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,8 +8,7 @@ import lombok.NoArgsConstructor;
 import org.perennial.gst_hero.annotation.ValidFinancialYear;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 /**
  * Author:  Utkarsh Khalkar
