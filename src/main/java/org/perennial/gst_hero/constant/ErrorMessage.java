@@ -12,5 +12,6 @@ public interface ErrorMessage {
     String USER_ALREADY_EXIST = "User Already Exist";
     String USER_NOT_FOUND = "User Not Found";
     String SALES_REPORT_ALREADY_GENERATED = "Sales Report Already Generated";
+    String PURCHASE_REPORT_ALREADY_GENERATED = "Purchase Report Already Generated";
     int ERROR_STATUS = 0;
 }

@@ -5,54 +5,37 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.time.LocalDate;
-
-
 
 /**
  * Author: Utkarsh Khalkar
- * Title:  Sales Parameter Entity Class
- * Date:   03-04-2025
- * Time:   12:06 PM
+ * Title:  Purchase Parameter entity class to create table in db
+ * Date:   07:02:2025
+ * Time:   11:15 AM
  */
-
 @Data
+@Entity
+@Table(name = "purchase_parameter")
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "sales_parameter")
-public class SalesParameter {
+public class PurchaseParameter {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="REQUEST_ID")
-    private long id;
-
-    @Column(name = "MONTH" )
-    private String month;
-
+    @Column(name = "REQUEST_ID")
+    private long request_id;
     @Column(name = "FINANCIAL_YEAR")
     private String financialYear;
-
-    @Column(name = "START_DATE")
-    private LocalDate startDate;
-
-    @Column(name = "END_DATE")
-    private LocalDate endDate;
-
+    @Column(name = "MONTH")
+    private String month;
+    @Column(name = "STATUS")
+    private String status;
     @Column(name = "CREATED_AT")
     private LocalDate createdAt;
-
     @Column(name = "UPDATED_AT")
     private LocalDate updatedAt;
-
-    @Column(name="STATUS")
-    private String status;
-
-
+    @Column(name = "SELLER_NAME")
+    private String sellerName;
     @Column(name = "USER_ID")
-    private int userId;
-
-
+    private long userId;
 }

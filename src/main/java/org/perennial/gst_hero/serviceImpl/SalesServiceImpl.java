@@ -104,9 +104,20 @@ public class SalesServiceImpl implements SalesService {
      */
     @Override
     public int getCountOfSalesRecord(String financialYear, LocalDate startDate, LocalDate endDate, String month, long userId) {
-        log.info("START :: CLASS :: SalesServiceImpl :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "+financialYear);
         int countOfSalesRecord=salesRepository.getCountOfSalesRecord(financialYear,startDate,endDate,month,userId);
-        log.info("END :: CLASS :: SalesServiceImpl :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "+financialYear);
         return countOfSalesRecord;
+    }
+
+    /**
+     * Method to delete sales details by sale date
+     * @param date to delete sales details
+     */
+    @Override
+    public void deleteBySaleDate(LocalDate date) {
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: deleteBySaleDate :: Date:{}",date);
+        salesRepository.deleteByCreatedAt(date);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: deleteBySaleDate :: Date:{}",date);
     }
 }

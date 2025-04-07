@@ -58,4 +58,6 @@ public interface SalesRepository extends JpaRepository<Sales,Long> {
             @Param("month") String month,
             @Param("userId") Long userId
     );
+
+    void deleteByCreatedAt(LocalDate date);
 }

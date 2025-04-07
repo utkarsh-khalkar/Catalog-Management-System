@@ -19,5 +19,6 @@ public interface SalesService {
     List<Sales> findSalesByFinancialYearWithBatchSize(String financialYear, int batchSize, int offset);
     List<Sales> findSalesDetailsWithBatchSize(String financialYear, LocalDate startDate,LocalDate endDate, String month,long userId,int batchSize, int offset);
     int getCountOfSalesRecord(String financialYear,LocalDate startDate,LocalDate endDate, String month,long userId);
+    void deleteBySaleDate(LocalDate date);
 
 }

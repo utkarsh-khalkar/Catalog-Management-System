@@ -13,4 +13,8 @@ public interface SuccessMessage {
      int SUCCESS_STATUS=1;
      String SALES_CREATED = "Sales Details Created Successfully ";
      String REPORT_GENERATION_MESSAGE="Sales History Generation  request submitted successfully";
+     String PURCHASE_CREATED="Purchase Details Created Successfully ";
+     String PURCHASE_HISTORY_GENERATION_REQUEST="Purchase History Generation request submitted successfully";
+     String PURCHASE_DETAILS_DELETED="Purchase Details Deleted Successfully ";
+     String SALES_DETAILS_DELETED="Sales Details Deleted Successfully ";
 }

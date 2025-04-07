@@ -112,7 +112,9 @@ public class SalesRequestHandler {
 
 
         for (SalesParameter salesParameter : salesParameters) {
-            int totalRecord=salesService.getCountOfSalesRecord(salesParameter.getFinancialYear(),salesParameter.getStartDate(),salesParameter.getEndDate(),salesParameter.getMonth(),salesParameter.getUserId());
+            int totalRecord=salesService.getCountOfSalesRecord(salesParameter.getFinancialYear(),
+                    salesParameter.getStartDate(),salesParameter.getEndDate(),salesParameter.getMonth(),
+                    salesParameter.getUserId());
             int offset=0;
             List<Sales> salesBatch;
             int batchSize=Math.min(baseBatchSize+(totalRecord/1000),maxBatchSize);
@@ -150,7 +152,7 @@ public class SalesRequestHandler {
      * @throws IOException if any interruption o while writing data
      */
     public void writeSalesData(List<Sales> salesBatch, String filename) throws IOException {
-        log.info("START :: CLASS :: SalesParameterServiceImpl :: METHOD :: writeSalesData :: salesBatchSize ::"+salesBatch.size());
+        log.info("START :: CLASS :: SalesRequestHandler :: METHOD :: writeSalesData :: salesBatchSize ::"+salesBatch.size());
 
         try {
 
@@ -202,7 +204,7 @@ public class SalesRequestHandler {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        log.info("END :: CLASS :: SalesParameterServiceImpl :: METHOD :: writeSalesData :: salesBatchSize ::"+salesBatch.size());
+        log.info("END :: CLASS :: SalesRequestHandler :: METHOD :: writeSalesData :: salesBatchSize ::"+salesBatch.size());
     }
 
     /**
@@ -226,6 +228,16 @@ public class SalesRequestHandler {
 
         log.info("END :: CLASS :: SalesRequestHandler :: METHOD :: isReportGenerated :: SalesParameter: {}", salesParameterDTO);
         return isGenerated;
+    }
+
+    /**
+     * Method to delete sales details by sales date
+     * @param saleDate to delete sales details
+     */
+    public void deleteSalesDetailsBySaleDate(LocalDate saleDate) {
+        log.info("START :: CLASS :: SalesRequestHandler :: METHOD :: deleteSalesDetailsBySaleDate :: Sale Date:{}",saleDate);
+        salesService.deleteBySaleDate(saleDate);
+        log.info("END :: CLASS :: SalesRequestHandler :: METHOD :: deleteSalesDetailsBySaleDate :: Sale Date:{}",saleDate);
     }
 
 }

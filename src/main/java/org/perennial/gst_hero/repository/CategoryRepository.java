@@ -24,5 +24,4 @@ public interface CategoryRepository  extends JpaRepository<Category, String> {
     @Query(value = "SELECT * FROM category_details WHERE user_id = :userId", nativeQuery = true)
     List<Category> findByUser_Id(@Param("userId") Long id);
 
-
 }
