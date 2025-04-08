@@ -1,5 +1,6 @@
 package org.perennial.gst_hero.repository;
 
+import org.perennial.gst_hero.Entity.Purchase;
 import org.perennial.gst_hero.Entity.Sales;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,7 +20,8 @@ import java.util.List;
 @Repository
 public interface SalesRepository extends JpaRepository<Sales,Long> {
     List<Sales> findByFinancialYear(String financialYear);
-    @Query(value = "SELECT * FROM sales_details WHERE financial_year = :financialYear LIMIT :batchSize OFFSET :offset", nativeQuery = true)
+    @Query(value = "SELECT * FROM sales_details WHERE financial_year = :financialYear LIMIT :batchSize OFFSET :offset",
+            nativeQuery = true)
     List<Sales> findSalesByFinancialYearWithBatchSize(@Param("financialYear") String financialYear,
                                                       @Param("batchSize") int batchSize,
                                                       @Param("offset") int offset);
@@ -60,4 +62,11 @@ public interface SalesRepository extends JpaRepository<Sales,Long> {
     );
 
     void deleteByCreatedAt(LocalDate date);
+
+    @Query(value = "SELECT * FROM sales_details WHERE sales_id = :salesId", nativeQuery = true)
+    Sales findBySales_id(@Param("salesId") long salesId);
+
+
+
+
 }

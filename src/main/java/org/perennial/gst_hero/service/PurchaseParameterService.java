@@ -25,5 +25,12 @@ public interface PurchaseParameterService {
      */
      List<PurchaseParameter> findAllPurchaseParameterByStatus(String status);
 
+    /**
+     * Method to find sa
+     * @param financialYear
+     * @return
+     */
+     PurchaseParameter findByFinancialYear(String financialYear);
+
 
 }

@@ -13,5 +13,9 @@ public interface ErrorMessage {
     String USER_NOT_FOUND = "User Not Found";
     String SALES_REPORT_ALREADY_GENERATED = "Sales Report Already Generated";
     String PURCHASE_REPORT_ALREADY_GENERATED = "Purchase Report Already Generated";
+    String PAST_FINANCIAL_REQUEST = "Past Financial Year Records cannot be Updated";
+    String SALES_RECORD_NOT_FOUND = "Sales Record Not Found";
     int ERROR_STATUS = 0;
+    String PURCHASE_REQUEST_NOT_FOUND = "Purchase Record Not Found";
+
 }

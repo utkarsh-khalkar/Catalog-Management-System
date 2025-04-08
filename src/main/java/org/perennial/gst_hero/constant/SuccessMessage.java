@@ -17,4 +17,9 @@ public interface SuccessMessage {
      String PURCHASE_HISTORY_GENERATION_REQUEST="Purchase History Generation request submitted successfully";
      String PURCHASE_DETAILS_DELETED="Purchase Details Deleted Successfully ";
      String SALES_DETAILS_DELETED="Sales Details Deleted Successfully ";
+     String PRODUCT_ADDED_SUCCESSFULLY="Product Added Successfully ";
+     String PRODUCT_UPDATED_SUCCESSFULLY="Product Updated Successfully ";
+     String SALES_UPDATED_SCCESSFULLY="Sales Record Updated Successfully ";
+     String PURCHASE_RECORD_UPDATED="Purchase Record Updated Successfully ";
+
 }

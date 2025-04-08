@@ -29,9 +29,11 @@ public class SalesParameterServiceImpl implements SalesParameterService {
      */
     @Override
     public void saveSalesParameter(SalesParameter salesParameter) {
-        log.info("START :: CLASS :: SalesParameterServiceImpl :: METHOD :: saveSalesParameter :: REQUEST_DATE ::"+salesParameter.getCreatedAt());
+        log.info("START :: CLASS :: SalesParameterServiceImpl :: METHOD :: saveSalesParameter :: REQUEST_DATE ::"
+                +salesParameter.getCreatedAt());
         salesParameterRepository.save(salesParameter);
-        log.info("END :: CLASS :: SalesParameterServiceImpl :: METHOD :: saveSalesParameter :: REQUEST_DATE ::"+salesParameter.getCreatedAt());
+        log.info("END :: CLASS :: SalesParameterServiceImpl :: METHOD :: saveSalesParameter :: REQUEST_DATE ::"
+                +salesParameter.getCreatedAt());
 
     }
 
@@ -47,6 +49,24 @@ public class SalesParameterServiceImpl implements SalesParameterService {
         log.info("END :: CLASS :: SalesParameterService :: METHOD :: findAllSalesParameterByStatus :: STATUS ::"+status);
         return salesParameterList;
     }
+
+    /**
+     * Method to find sales parameter by financial Year
+     * @param financialYear to find purchase parameter
+     * @return sales parameter
+     */
+    @Override
+    public SalesParameter findByFinancialYear(String financialYear) {
+        log.info("START :: CLASS :: findByFinancialYear :: METHOD :: findByFinancialYear :: FINANCIAL_YEAR:{} ::",
+                financialYear);
+
+        SalesParameter salesParameter = salesParameterRepository.findByFinancialYear(financialYear);
+        log.info("END :: CLASS :: findByFinancialYear :: METHOD :: findByFinancialYear :: FINANCIAL_YEAR:{} ::",
+                financialYear);
+        return salesParameter;
+    }
+
+
 
 
 }

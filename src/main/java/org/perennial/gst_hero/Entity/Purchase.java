@@ -23,8 +23,8 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PURCHASE_ID")
     private long purchase_id;
-    @Column(name = "PRODUCT_CODE")
-    private String product_code;
+    @Column(name = "PRODUCT_NAME")
+    private String productName;
     @Column(name = "QUANTITY")
     private int quantity;
     @Column(name = "PRICE")
@@ -35,10 +35,12 @@ public class Purchase {
     private LocalDate updatedAt;
     @Column(name = "FINANCIAL_YEAR")
     private String financialYear;
-    @Column(name = "CATEGORY_CODE")
-    private String categoryCode;
+    @Column(name = "CATEGORY_NAME")
+    private String categoryName;
     @Column(name = "SELLER_NAME")
     private String sellerName;
+    @Column(name = "TOTAL_PRICE")
+    private double totalPrice;
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID",nullable = false)
     private User user;

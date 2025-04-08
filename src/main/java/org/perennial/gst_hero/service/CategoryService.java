@@ -17,6 +17,8 @@ public interface CategoryService {
     void  save(Category category);
     List<Category> getAll();
     void delete(String categoryCode);
-    Optional<Category> findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(String categoryCode,String categoryName, String categoryDescription);
+    Optional<Category> findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(String categoryCode,
+                                                                                       String categoryName,
+                                                                                       String categoryDescription);
     List<Category> findByUserId(Long id);
 }

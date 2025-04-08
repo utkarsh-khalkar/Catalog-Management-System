@@ -27,11 +27,11 @@ public class SalesServiceImpl implements SalesService {
      * @param sales object to save in DB
      */
     @Override
-    public void save(Sales sales) {
-        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: save :: CATEGORY_CODE:: "+sales.getCategoryCode());
-        salesRepository.save(sales);
-        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: save :: CATEGORY_CODE:: "+sales.getCategoryCode());
-
+    public Sales saveSalesDetails(Sales sales) {
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: save :: CATEGORY_NAME:: "+sales.getCategoryName());
+        Sales sales1=salesRepository.save(sales);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: save :: CATEGORY_NAME:: "+sales.getCategoryName());
+        return sales1;
     }
     /**
      * Method to find all sales details by financialYear
@@ -40,9 +40,11 @@ public class SalesServiceImpl implements SalesService {
      */
     @Override
     public List<Sales> findSalesByFinancialYear(String financialYear) {
-        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: findSalesByFinancialYear :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: findSalesByFinancialYear :: FINANCIAL_YEAR :: "
+                +financialYear);
         List<Sales> salesList = salesRepository.findByFinancialYear(financialYear);
-        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: findSalesByFinancialYear :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: findSalesByFinancialYear :: FINANCIAL_YEAR :: "
+                +financialYear);
         return salesList;
     }
 
@@ -53,9 +55,11 @@ public class SalesServiceImpl implements SalesService {
      */
     @Override
     public int getCountByFinancialYear(String financialYear) {
-        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: getCountByFinancialYear :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: getCountByFinancialYear :: FINANCIAL_YEAR :: "
+                +financialYear);
         int count = salesRepository.countByFinancialYear(financialYear);
-        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: getCountByFinancialYear :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: getCountByFinancialYear :: FINANCIAL_YEAR :: "
+                +financialYear);
         return count;
     }
 
@@ -68,9 +72,11 @@ public class SalesServiceImpl implements SalesService {
      */
     @Override
     public List<Sales> findSalesByFinancialYearWithBatchSize(String financialYear, int batchSize, int offset) {
-        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: findByFinancialYearWithBatchSize :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: findByFinancialYearWithBatchSize :: FINANCIAL_YEAR ::"
+                +financialYear);
         List<Sales> salesList = salesRepository.findSalesByFinancialYearWithBatchSize(financialYear,batchSize,offset);
-        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: findByFinancialYearWithBatchSize :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: findByFinancialYearWithBatchSize :: FINANCIAL_YEAR :: "
+                +financialYear);
         return salesList;
     }
 
@@ -86,9 +92,12 @@ public class SalesServiceImpl implements SalesService {
      * @return list of sales details
      */
     @Override
-    public List<Sales> findSalesDetailsWithBatchSize(String financialYear, LocalDate startDate, LocalDate endDate, String month, long userId, int batchSize, int offset) {
-        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: findSalesDetailsWithBatchSize :: Batch Size ::"+batchSize);
-        List<Sales> salesList=salesRepository.findSalesDetailsWithBatchSize(financialYear,startDate,endDate,month,userId,batchSize,offset);
+    public List<Sales> findSalesDetailsWithBatchSize(String financialYear, LocalDate startDate, LocalDate endDate,
+                                                     String month, long userId, int batchSize, int offset) {
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: findSalesDetailsWithBatchSize :: Batch Size ::"
+                +batchSize);
+        List<Sales> salesList=salesRepository.findSalesDetailsWithBatchSize(financialYear,startDate,endDate,month,
+                userId,batchSize,offset);
         log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: findSalesDetailsWithBatchSize :: Batch Size ::"+batchSize);
         return salesList;
     }
@@ -103,10 +112,13 @@ public class SalesServiceImpl implements SalesService {
      * @return count of sales record
      */
     @Override
-    public int getCountOfSalesRecord(String financialYear, LocalDate startDate, LocalDate endDate, String month, long userId) {
-        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "+financialYear);
+    public int getCountOfSalesRecord(String financialYear, LocalDate startDate, LocalDate endDate, String month,
+                                     long userId) {
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "
+                +financialYear);
         int countOfSalesRecord=salesRepository.getCountOfSalesRecord(financialYear,startDate,endDate,month,userId);
-        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "+financialYear);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: getCountOfSalesRecord :: FINANCIAL_YEAR :: "
+                +financialYear);
         return countOfSalesRecord;
     }
 
@@ -119,5 +131,13 @@ public class SalesServiceImpl implements SalesService {
         log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: deleteBySaleDate :: Date:{}",date);
         salesRepository.deleteByCreatedAt(date);
         log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: deleteBySaleDate :: Date:{}",date);
+    }
+
+    @Override
+    public Sales findBySalesId(long salesId) {
+        log.info("START :: CLASS :: SalesServiceImpl :: METHOD :: findBySalesId :: Sales ID:{}",salesId);
+        Sales sales=salesRepository.findBySales_id(salesId);
+        log.info("END :: CLASS :: SalesServiceImpl :: METHOD :: findBySalesId :: Sales ID:{}",salesId);
+        return sales;
     }
 }

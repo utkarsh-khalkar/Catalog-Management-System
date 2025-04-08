@@ -28,4 +28,6 @@ public interface PurchaseParameterRepository extends JpaRepository<PurchaseParam
             @Param("financialYear") String financialYear,
             @Param("month") String month,
             @Param("userId") String userId);
+
+    PurchaseParameter findByFinancialYear(String financialYear);
 }

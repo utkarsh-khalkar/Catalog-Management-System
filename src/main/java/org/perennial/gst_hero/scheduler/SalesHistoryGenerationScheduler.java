@@ -21,14 +21,15 @@ public class SalesHistoryGenerationScheduler {
 
     @Autowired
     private SalesRequestHandler salesRequestHandler;
-    @Autowired
-    PurchaseRequestHandler purchaseRequestHandler;
 
+    /**
+     * Scheduler to Write sales data into excel file in every 1 minutes
+     * @throws IOException if any interruption occurred
+     */
     @Scheduled(cron = "0 */1 * * * *")
     public void writeSalesData() throws IOException {
         log.info("START :: CLASS :: SalesHistoryGenerationScheduler :: METHOD :: writeSalesData");
         salesRequestHandler.salesDataProcessing();
-        purchaseRequestHandler.processPurchaseData();
         log.info("END :: CLASS :: SalesHistoryGenerationScheduler :: METHOD :: writeSalesData");
     }
 }

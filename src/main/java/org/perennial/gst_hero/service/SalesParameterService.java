@@ -2,6 +2,7 @@ package org.perennial.gst_hero.service;
 
 import org.perennial.gst_hero.Entity.SalesParameter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -13,5 +14,7 @@ import java.util.List;
 public interface SalesParameterService {
     void saveSalesParameter(SalesParameter salesParameter);
     List<SalesParameter> findAllSalesParameterByStatus(String status);
+    SalesParameter findByFinancialYear(String financialYear);
+    SalesParameter findByAllParams(String financialYear, String month, LocalDate startDate, LocalDate endDate,long userId);
 
 }

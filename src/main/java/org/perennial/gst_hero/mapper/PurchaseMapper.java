@@ -25,13 +25,15 @@ public class PurchaseMapper {
     public static Purchase toPurchase(PurchaseDTO purchaseDTO, User user) {
         log.info("START :: CLASS :: PurchaseMapper :: METHOD :: toPurchase :: PURCHASEDTO ::"+purchaseDTO);
         Purchase purchase = new Purchase();
-        purchase.setCategoryCode(purchaseDTO.getCategoryCode());
+        purchase.setCategoryName(purchaseDTO.getCategoryName());
         purchase.setPrice(purchaseDTO.getPrice());
         purchase.setSellerName(purchaseDTO.getSellerName());
         purchase.setCreatedAt(LocalDate.now());
         purchase.setUpdatedAt(LocalDate.now());
         purchase.setQuantity(purchaseDTO.getQuantity());
-        purchase.setProduct_code(purchaseDTO.getProduct_code());
+        purchase.setProductName(purchaseDTO.getProductName());
+        double totalPrice= purchaseDTO.getPrice()*purchaseDTO.getQuantity();
+        purchase.setTotalPrice(totalPrice);
         purchase.setUser(user);
         purchase.setFinancialYear(purchaseDTO.getFinancialYear());
         log.info("END :: CLASS :: PurchaseMapper :: METHOD :: toPurchase :: PURCHASEDTO ::"+purchaseDTO);

@@ -13,8 +13,10 @@ import java.util.List;
  */
 public interface PurchaseService {
 
-    void savePurchaseDetails(Purchase purchase);
+    Purchase savePurchaseDetails(Purchase purchase);
     int getCountOfPurchaseDetails(String financialYear,String month,String sellerName,long userId);
-    List<Purchase> findPurchaseDetailsWithBatchSize(String financialYear,String month,String sellerName,long userId,int batchSize,int offset);
+    List<Purchase> findPurchaseDetailsWithBatchSize(String financialYear,String month,String sellerName,long userId,
+                                                    int batchSize,int offset);
     void deletePurchaseDetailsByPurchaseDate(LocalDate date);
+    Purchase findByPurchaseId(long purchaseId);
 }

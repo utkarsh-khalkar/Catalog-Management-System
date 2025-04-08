@@ -24,17 +24,19 @@ public class SalesMapper {
      * @return sales model
      */
     public static Sales toModel(SalesDTO salesDTO, User user) {
-        log.info("START :: CLASS :: SalesMapper :: toModel :: salesDTO ::"+salesDTO.getCategoryCode());
+        log.info("START :: CLASS :: SalesMapper :: toModel :: salesDTO:{}",salesDTO);
         Sales sales = new Sales();
-        sales.setCategoryCode(salesDTO.getCategoryCode());
-        sales.setProductCode(salesDTO.getProductCode());
+        sales.setCategoryName(salesDTO.getCategoryName());
+        sales.setProductName(salesDTO.getProductName());
         sales.setQuantity(salesDTO.getQuantity());
         sales.setFinancialYear(salesDTO.getFinancialYear());
         sales.setCreatedAt(LocalDate.now());
         sales.setUpdatedAt(LocalDate.now());
         sales.setProductPrice(salesDTO.getProductPrice());
+        double totalPrice=salesDTO.getProductPrice()*salesDTO.getQuantity();
+        sales.setTotalPrice(totalPrice);
         sales.setUser(user);
-        log.info("END :: CLASS :: SalesMapper :: toModel :: salesDTO ::"+salesDTO.getCategoryCode());
+        log.info("END :: CLASS :: SalesMapper :: toModel :: salesDTO:{}",salesDTO);
         return sales;
 
     }

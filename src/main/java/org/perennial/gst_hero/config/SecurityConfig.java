@@ -81,9 +81,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         log.info("START :: CLASS :: SecurityConfig :: METHOD :: securityFilterChain ::");
          http.csrf(AbstractHttpConfigurer::disable);
-        http.authorizeHttpRequests(request -> request.requestMatchers("/catalog/user/register","/catalog/user/login").permitAll().anyRequest().authenticated());
+        http.authorizeHttpRequests(request -> request.requestMatchers("" +
+                "/catalog/user/register","/catalog/user/login").permitAll().anyRequest().authenticated());
          http.httpBasic(Customizer.withDefaults());
-         http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+
+         http.sessionManagement(session -> session.sessionCreationPolicy(
+                 SessionCreationPolicy.STATELESS));
          http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
          log.info("END :: CLASS :: SecurityConfig :: METHOD :: securityFilterChain ::");
          return http.build();

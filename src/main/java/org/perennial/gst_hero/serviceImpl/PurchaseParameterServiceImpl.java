@@ -27,9 +27,11 @@ public class PurchaseParameterServiceImpl implements PurchaseParameterService {
      */
     @Override
     public void savePurchaseParameter(PurchaseParameter purchaseParameter) {
-        log.info("START :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: savePurchaseParameter :: purchaseParameter:{}", purchaseParameter);
+        log.info("START :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: savePurchaseParameter ::" +
+                " purchaseParameter:{}", purchaseParameter);
         purchaseParameterRepository.save(purchaseParameter);
-        log.info("END :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: savePurchaseParameter :: purchaseParameter:{}", purchaseParameter);
+        log.info("END :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: savePurchaseParameter :: " +
+                "purchaseParameter:{}", purchaseParameter);
     }
 
     /**
@@ -39,9 +41,11 @@ public class PurchaseParameterServiceImpl implements PurchaseParameterService {
      */
     @Override
     public List<PurchaseParameter> findAllPurchaseParameterByStatus(String status) {
-        log.info("START :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: findAllPurchaseParameterByStatus :: status:{}", status);
+        log.info("START :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: findAllPurchaseParameterByStatus :: " +
+                "status:{}", status);
         List<PurchaseParameter> purchaseParameterList = purchaseParameterRepository.findByStatus(status);
-        log.info("END :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: findAllPurchaseParameterByStatus :: status:{}", status);
+        log.info("END :: CLASS :: PurchaseParameterServiceImpl :: METHOD :: findAllPurchaseParameterByStatus :: " +
+                "status:{}", status);
         return purchaseParameterList;
     }
 }

@@ -38,11 +38,13 @@ public class CategoryRequestHandler {
      * @param categoryDTO object to add the category data into db
      */
     public void saveCategory(CategoryDTO categoryDTO) {
-        log.info("START :: CLASS :: CategoryRequestHandler METHOD :: saveCategory :: CategoryCode :: " + categoryDTO.getCategoryCode());
+        log.info("START :: CLASS :: CategoryRequestHandler METHOD :: saveCategory :: CategoryCode :: "
+                + categoryDTO.getCategoryCode());
         Optional<User> user=userService.findUserById(categoryDTO.getUserID());
         Category category = CategoryMapper.toModel(categoryDTO,user.get());
         categoryService.save(category);
-        log.info("END :: CLASS :: CategoryRequestHandler METHOD :: saveCategory :: CategoryCode :: " + categoryDTO.getCategoryCode());
+        log.info("END :: CLASS :: CategoryRequestHandler METHOD :: saveCategory :: CategoryCode :: "
+                + categoryDTO.getCategoryCode());
     }
 
     /**
@@ -51,9 +53,12 @@ public class CategoryRequestHandler {
      * @return true if category present
      */
     public boolean findCategoryEntry(CategoryDTO categoryDTO) {
-        log.info("START :: CLASS :: CategoryRequestHandler METHOD :: findCategoryEntry :: CategoryCode :: " + categoryDTO.getCategoryCode());
-        Optional<Category> category = categoryService.findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(categoryDTO.getCategoryCode(),categoryDTO.getCategoryName(),categoryDTO.getDescription());
-        log.info("END :: CLASS :: CategoryRequestHandler METHOD :: findCategoryEntry :: CategoryCode :: " + categoryDTO.getCategoryCode());
+        log.info("START :: CLASS :: CategoryRequestHandler METHOD :: findCategoryEntry :: CategoryCode :: "
+                + categoryDTO.getCategoryCode());
+        Optional<Category> category = categoryService.findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(
+                categoryDTO.getCategoryCode(),categoryDTO.getCategoryName(),categoryDTO.getDescription());
+        log.info("END :: CLASS :: CategoryRequestHandler METHOD :: findCategoryEntry :: CategoryCode :: "
+                + categoryDTO.getCategoryCode());
         return category.isPresent() ? true : false;
     }
 

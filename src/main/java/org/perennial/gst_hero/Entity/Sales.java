@@ -24,11 +24,11 @@ public class Sales {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "SALES_ID")
     private long sales_id;
-    @Column(name = "CATEGORY_CODE")
-    private String categoryCode;
+    @Column(name = "CATEGORY_NAME")
+    private String categoryName;
 
-    @Column(name = "PRODUCT_CODE")
-    private String productCode;
+    @Column(name = "PRODUCT_NAME")
+    private String productName;
 
     @Column(name = "CREATED_AT")
     private LocalDate createdAt;
@@ -44,6 +44,9 @@ public class Sales {
 
     @Column(name = "QUANTITY")
     private int quantity;
+
+    @Column(name = "TOTAL_PRICE")
+    private double totalPrice;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID",nullable = false)

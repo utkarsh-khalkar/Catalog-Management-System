@@ -21,9 +21,11 @@ public class GlobalExceptionHandler {
      * @return map with field name and message of invalid field.
      */
     @ExceptionHandler(value = { MethodArgumentNotValidException.class })
-    public ResponseEntity<ApiResponseDTO<Object>> handleMethodArgumentNotValidException(MethodArgumentNotValidException ex) {
+    public ResponseEntity<ApiResponseDTO<Object>> handleMethodArgumentNotValidException(
+            MethodArgumentNotValidException ex) {
 
-        log.info("START :: CLASS :: GlobalExceptionHandler :: METHOD :: handleMethodArgumentNotValidException :: Argument ::"+ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        log.info("START :: CLASS :: GlobalExceptionHandler :: METHOD :: handleMethodArgumentNotValidException :: " +
+                "Argument ::"+ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
         Map<String, String> response = new HashMap<>();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String field=((FieldError)error).getField();
@@ -38,7 +40,8 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value(),
                 0
         );
-        log.info("END :: CLASS :: GlobalExceptionHandler :: METHOD :: handleMethodArgumentNotValidException :: Argument ::"+ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
+        log.info("END :: CLASS :: GlobalExceptionHandler :: METHOD :: handleMethodArgumentNotValidException ::" +
+                " Argument ::"+ex.getBindingResult().getAllErrors().get(0).getDefaultMessage());
 
         return new ResponseEntity<>(apiResponseDTO, HttpStatus.BAD_REQUEST);
     }

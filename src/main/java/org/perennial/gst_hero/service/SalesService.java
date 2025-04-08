@@ -13,12 +13,14 @@ import java.util.List;
  */
 public interface SalesService {
 
-    void save(Sales sales);
+    Sales saveSalesDetails(Sales sales);
     List<Sales> findSalesByFinancialYear(String financialYear);
     int getCountByFinancialYear(String financialYear);
     List<Sales> findSalesByFinancialYearWithBatchSize(String financialYear, int batchSize, int offset);
-    List<Sales> findSalesDetailsWithBatchSize(String financialYear, LocalDate startDate,LocalDate endDate, String month,long userId,int batchSize, int offset);
+    List<Sales> findSalesDetailsWithBatchSize(String financialYear, LocalDate startDate,LocalDate endDate,
+                                              String month,long userId,int batchSize, int offset);
     int getCountOfSalesRecord(String financialYear,LocalDate startDate,LocalDate endDate, String month,long userId);
     void deleteBySaleDate(LocalDate date);
+    Sales findBySalesId(long salesId);
 
 }

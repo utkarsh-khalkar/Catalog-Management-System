@@ -21,7 +21,8 @@ public class PurchaseParameterMapper {
      * @return parameter object
      */
     public static PurchaseParameter toModel(PurchaseParameterDTO purchaseParameterDTO) {
-        log.info("START :: CLASS :: PurchaseParameterMapper:: METHOD :: toModel :: purchaseParameterDTO:{}", purchaseParameterDTO);
+        log.info("START :: CLASS :: PurchaseParameterMapper:: METHOD :: toModel :: purchaseParameterDTO:{}",
+                purchaseParameterDTO);
         PurchaseParameter purchaseParameter = new PurchaseParameter();
         purchaseParameter.setFinancialYear(purchaseParameterDTO.getFinancialYear());
         purchaseParameter.setStatus("OPEN");
@@ -30,7 +31,8 @@ public class PurchaseParameterMapper {
         purchaseParameter.setUserId(purchaseParameterDTO.getUserId());
         purchaseParameter.setMonth(purchaseParameterDTO.getMonth());
         purchaseParameter.setSellerName(purchaseParameterDTO.getSellerName());
-        log.info("END :: CLASS :: PurchaseParameterMapper:: METHOD :: toModel :: purchaseParameterDTO:{}", purchaseParameterDTO);
+        log.info("END :: CLASS :: PurchaseParameterMapper:: METHOD :: toModel :: purchaseParameterDTO:{}",
+                purchaseParameterDTO);
         return purchaseParameter;
     }
 }

@@ -21,8 +21,8 @@ import org.perennial.gst_hero.annotation.ValidFinancialYear;
 @NoArgsConstructor
 public class PurchaseDTO {
 
-    @NotBlank(message = "Product code cannot be blank")
-    private String product_code;
+    @NotBlank(message = "Product Name cannot be blank")
+    private String productName;
 
     @Min(value = 1, message = "Quantity must be at least 1")
     private int quantity;
@@ -34,9 +34,8 @@ public class PurchaseDTO {
     @ValidFinancialYear
     private String financialYear;
 
-    @NotBlank(message = "Category Code cannot be blank")
-    @Pattern(regexp = "^[A-Za-z]{4}[0-9]{4}$", message = "Invalid Category Code. It must start with 4 letters followed by 4 digits")
-    private String categoryCode;
+    @NotBlank(message = "Category Name cannot be blank")
+    private String categoryName;
 
     @NotBlank(message = "Seller name cannot be blank")
     @Pattern(regexp = "^[A-Za-z]+$", message = "Seller name must contain only letters")

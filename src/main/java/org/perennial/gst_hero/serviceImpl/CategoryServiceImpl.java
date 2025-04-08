@@ -58,10 +58,14 @@ public class CategoryServiceImpl implements CategoryService {
      * @return category
      */
     @Override
-    public Optional<Category> findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(String categoryCode, String categoryName, String categoryDescription) {
-        log.info("START :: CLASS :: CategoryServiceImpl :: METHOD :: findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription :: Category Code ::"+categoryCode);
-        Optional<Category> category= categoryRepository.findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(categoryCode,categoryName,categoryDescription);
-        log.info("END :: CLASS :: CategoryServiceImpl :: METHOD :: findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription :: Category Code ::"+categoryCode);
+    public Optional<Category> findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(
+            String categoryCode, String categoryName, String categoryDescription) {
+        log.info("START :: CLASS :: CategoryServiceImpl :: METHOD :: " +
+                "findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription :: Category Code ::"+categoryCode);
+        Optional<Category> category= categoryRepository.findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(
+                categoryCode,categoryName,categoryDescription);
+        log.info("END :: CLASS :: CategoryServiceImpl :: METHOD :: " +
+                "findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription :: Category Code ::"+categoryCode);
         return category;
     }
 

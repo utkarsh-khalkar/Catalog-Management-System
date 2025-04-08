@@ -28,10 +28,11 @@ public class PurchaseServiceImpl implements PurchaseService {
      * @param purchase object to save purchase details in db
      */
     @Override
-    public void savePurchaseDetails(Purchase purchase) {
+    public Purchase savePurchaseDetails(Purchase purchase) {
         log.info("START :: CLASS :: PurchaseServiceImpl :: METHOD :: savePurchaseDetails :: SELLER NAME ::"+purchase.getSellerName());
-        purchaseRepository.save(purchase);
+        Purchase purchase1=purchaseRepository.save(purchase);
         log.info("END :: CLASS :: PurchaseServiceImpl :: METHOD :: savePurchaseDetails :: SELLER NAME ::"+purchase.getSellerName());
+        return purchase1;
     }
 
     /**
@@ -61,9 +62,12 @@ public class PurchaseServiceImpl implements PurchaseService {
      * @return list of purchase details
      */
     @Override
-    public List<Purchase> findPurchaseDetailsWithBatchSize(String financialYear, String month, String sellerName, long userId, int batchSize, int offset) {
-        log.info("START :: CLASS :: PurchaseServiceImpl :: METHOD :: findPurchaseDetailsWithBatchSize :: USER ID:{}",userId);
-        List<Purchase> purchases=purchaseRepository.findPurchaseDetailsWithBatchSize(financialYear,month,sellerName,userId,batchSize,offset);
+    public List<Purchase> findPurchaseDetailsWithBatchSize(String financialYear, String month, String sellerName,
+                                                           long userId, int batchSize, int offset) {
+        log.info("START :: CLASS :: PurchaseServiceImpl :: METHOD :: findPurchaseDetailsWithBatchSize :: " +
+                "USER ID:{}",userId);
+        List<Purchase> purchases=purchaseRepository.findPurchaseDetailsWithBatchSize(financialYear,month,
+                sellerName,userId,batchSize,offset);
         log.info("END :: CLASS :: PurchaseServiceImpl :: METHOD :: findPurchaseDetailsWithBatchSize :: USER ID:{}",userId);
         return purchases;
     }
@@ -77,5 +81,18 @@ public class PurchaseServiceImpl implements PurchaseService {
         log.info("START :: CLASS :: PurchaseServiceImpl :: METHOD :: deletePurchaseDetailsByPurchaseDate :: Date:{}",date);
         purchaseRepository.deleteByCreatedAt(date);
         log.info("END :: CLASS :: PurchaseServiceImpl :: METHOD :: deletePurchaseDetailsByPurchaseDate :: Date:{}",date);
+    }
+
+    /**
+     * Method to find purchase record
+     * @param purchaseId to find purchase record
+     * @return purchase record
+     */
+    @Override
+    public Purchase findByPurchaseId(long purchaseId) {
+        log.info("START :: CLASS :: PurchaseServiceImpl :: METHOD :: findByPurchaseId :: Purchase ID:{}",purchaseId);
+        Purchase purchase=purchaseRepository.findByPurchaseId(purchaseId);
+        log.info("END :: CLASS :: PurchaseServiceImpl :: METHOD :: findByPurchaseId :: Purchase ID:{}",purchaseId);
+        return purchase;
     }
 }

@@ -5,9 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 
-
+//@EnableScheduling
 @SpringBootApplication(scanBasePackages = "org.perennial.gst_hero")
-@EnableScheduling
 public class CatalogManagementSystemApplication {
 
 	public static void main(String[] args) {

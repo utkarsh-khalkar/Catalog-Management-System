@@ -48,13 +48,15 @@ public class UserController {
         log.info("START :: CLASS :: UserController :: METHOD :: saveUser :: UserEmail ::"+userDTO.getUsername());
         Optional<User> isUserExist = userRequestHandler.findUserByUsername(userDTO.getUsername());
         if(isUserExist.isPresent()){
-            ApiResponseDTO<Object> apiResponseDTO= userRequestHandler.apiResponse(Collections.emptyList(), ErrorMessage.USER_ALREADY_EXIST,HttpStatus.CONFLICT.value(),ErrorMessage.ERROR_STATUS);
+            ApiResponseDTO<Object> apiResponseDTO= userRequestHandler.apiResponse(Collections.emptyList(),
+                    ErrorMessage.USER_ALREADY_EXIST,HttpStatus.CONFLICT.value(),ErrorMessage.ERROR_STATUS);
             log.info("ERROR :: CLASS :: UserController :: METHOD :: saveUser :: UserEmail ::"+userDTO.getUsername());
             return new ResponseEntity<>(apiResponseDTO, HttpStatus.CONFLICT);
         }
         userRequestHandler.saveUser(userDTO);
 
-        ApiResponseDTO<Object> apiResponseDTO = new ApiResponseDTO<>(Collections.emptyList(), SuccessMessage.USER_CREATED_SUCCESSFULLY,HttpStatus.CREATED.value(), SuccessMessage.SUCCESS_STATUS);
+        ApiResponseDTO<Object> apiResponseDTO = new ApiResponseDTO<>(Collections.emptyList(),
+                SuccessMessage.USER_CREATED_SUCCESSFULLY,HttpStatus.CREATED.value(), SuccessMessage.SUCCESS_STATUS);
 
         log.info("END :: CLASS :: UserController :: METHOD :: saveUser :: UserEmail ::"+userDTO.getUsername());
         return new ResponseEntity<>(apiResponseDTO, HttpStatus.CREATED);
@@ -63,7 +65,8 @@ public class UserController {
     @PostMapping("/login")
     public String login(@Valid @RequestBody UserDTO userDTO)
     {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userDTO.getUsername(),userDTO.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken
+                (userDTO.getUsername(),userDTO.getPassword()));
         if (authentication.isAuthenticated()) {
             return jwtService.generateToken(userDTO.getUsername());
         }else {

@@ -16,7 +16,8 @@ import java.time.LocalDate;
 @Slf4j
 public class SalesParameterMapper {
     public static SalesParameter toModel(SalesParameterDTO salesParameterDTO) {
-        log.info("START :: CLASS :: SalesParameterMapper :: METHOD :: toModel :: USER_ID :: " + salesParameterDTO.getUserId());
+        log.info("START :: CLASS :: SalesParameterMapper :: METHOD :: toModel :: USER_ID :: " +
+                salesParameterDTO.getUserId());
         SalesParameter salesParameter = new SalesParameter();
         salesParameter.setCreatedAt(LocalDate.now());
         salesParameter.setUpdatedAt(LocalDate.now());
@@ -26,7 +27,8 @@ public class SalesParameterMapper {
         salesParameter.setFinancialYear(salesParameterDTO.getFinancialYear());
         salesParameter.setStartDate(salesParameterDTO.getStartDate());
         salesParameter.setEndDate(salesParameterDTO.getEndDate());
-        log.info("END :: CLASS :: SalesParameterMapper :: METHOD :: toModel :: USER_ID :: " + salesParameterDTO.getUserId());
+        log.info("END :: CLASS :: SalesParameterMapper :: METHOD :: toModel :: USER_ID :: " +
+                salesParameterDTO.getUserId());
         return salesParameter;
     }
 }

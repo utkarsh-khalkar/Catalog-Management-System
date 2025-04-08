@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Author: Utkarsh Khakar
@@ -64,5 +63,8 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 //    );
 
     void deleteByCreatedAt(LocalDate date);
+
+    @Query(value = "SELECT * FROM purchase_details WHERE purchase_id = :purchaseId",nativeQuery = true)
+    Purchase findByPurchaseId(@Param("purchaseId") long purchaseId);
 
 }

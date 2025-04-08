@@ -19,7 +19,9 @@ import java.util.Optional;
 public interface CategoryRepository  extends JpaRepository<Category, String> {
 
 
-    Optional<Category> findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(String categoryCode,String categoryName, String categoryDescription);
+    Optional<Category> findCategoryByCategoryCodeAndCategoryNameAndCategoryDescription(String categoryCode,
+                                                                                       String categoryName,
+                                                                                       String categoryDescription);
 
     @Query(value = "SELECT * FROM category_details WHERE user_id = :userId", nativeQuery = true)
     List<Category> findByUser_Id(@Param("userId") Long id);

@@ -17,12 +17,11 @@ import org.perennial.gst_hero.annotation.ValidFinancialYear;
 @AllArgsConstructor
 public class SalesDTO {
 
-    @NotBlank(message = "Category Code cannot be blank")
-    @Pattern(regexp = "^[A-Za-z]{4}[0-9]{4}",message = "Invalid Category Code it Start with 4 Character then 4 number")
-    private String categoryCode;
+    @NotBlank(message = "Category Name cannot be blank")
+    private String categoryName;
 
-    @NotBlank(message = "Product code cannot be blank")
-    private String productCode;
+    @NotBlank(message = "Product Name cannot be blank")
+    private String productName;
 
     @NotNull(message = "Product Price cannot be empty")
     @Positive(message = "Product price must be a positive value")
